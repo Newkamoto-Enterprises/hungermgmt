@@ -23,6 +23,12 @@ h1 {
     letter-spacing: -2px;
 }
 
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
 /* Header */
 .header {
     width: 100%;
