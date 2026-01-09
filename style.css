@@ -1,0 +1,198 @@
+/* Brutalist Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    background-color: #fff;
+    color: #000;
+}
+
+/* Typography */
+h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 2px solid #000;
+    padding: 20px 0;
+    line-height: 0.9;
+    letter-spacing: -2px;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 100;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    /* Responsive columns: auto-fill min 300px, or adjust as needed for brutal look */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    border-top: 1px solid #000;
+    /* Ensure top closure if header border isn't enough */
+    border-left: 1px solid #000;
+}
+
+.model-card {
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    position: relative;
+    overflow: hidden;
+    /* Aspect ratio for model cards, can be adjusted */
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.model-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(100%);
+    /* Optional: pure brutalist B&W vibe, remove if user wants color */
+    transition: filter 0.3s ease;
+}
+
+.model-card:hover .model-image {
+    filter: grayscale(0%);
+    cursor: pointer;
+}
+
+.model-name {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+    background-color: #fff;
+    padding: 2px 5px;
+    border: 1px solid #000;
+    text-transform: uppercase;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Profile View */
+.profile-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 200;
+    overflow-y: auto;
+    display: none;
+}
+
+body.view-profile .profile-container {
+    display: block;
+}
+
+body.view-profile .header,
+body.view-profile .grid-container {
+    display: none;
+}
+
+.profile-content {
+    display: flex;
+    min-height: 100vh;
+}
+
+.profile-sidebar {
+    width: 300px;
+    padding: 40px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    border-right: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profile-gallery {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-photo {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid #000;
+}
+
+.profile-name {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    border-bottom: 1px solid #eee;
+    /* Very subtle line for stats */
+    padding-bottom: 2px;
+}
+
+.stat-key {
+    color: #666;
+}
+
+.back-btn {
+    margin-top: 40px;
+    background: none;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    align-self: flex-start;
+}
+
+.back-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid #000;
+    }
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid #000;
+    padding: 20px;
+    text-align: center;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: #fff;
+}
