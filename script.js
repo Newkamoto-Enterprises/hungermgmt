@@ -63,6 +63,15 @@ const models = [
         skills: "Avant-Garde, Editorial"
     },
     {
+        id: "nadia",
+        name: "NADIA",
+        mainImage: "models photos/nadia_main.png",
+        thumbnail: "models photos/nadia_thumb.png",
+        images: ["models photos/nadia_fullbody_1.png", "models photos/nadia_side_1.png"],
+        stats: { height: "179cm", bust: "82cm", waist: "61cm", hips: "89cm", shoes: "39" },
+        skills: "Editorial, High Fashion"
+    },
+    {
         id: "arthur",
         name: "ARTHUR",
         mainImage: "models photos/d9ecf849-a84d-46d4-bc47-622d793b87cc 1.png",
@@ -98,15 +107,7 @@ const models = [
         stats: { height: "192cm", chest: "92cm", waist: "76cm", hips: "90cm", shoes: "45" },
         skills: "Runway, High Fashion"
     },
-    {
-        id: "nadia",
-        name: "NADIA",
-        mainImage: "models photos/nadia_main.png",
-        thumbnail: "models photos/nadia_thumb.png",
-        images: ["models photos/nadia_fullbody_1.png", "models photos/nadia_side_1.png"],
-        stats: { height: "179cm", bust: "82cm", waist: "61cm", hips: "89cm", shoes: "39" },
-        skills: "Editorial, High Fashion"
-    }
+
 ];
 
 const gridContainer = document.getElementById('grid-container');
