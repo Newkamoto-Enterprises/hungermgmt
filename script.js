@@ -81,11 +81,11 @@ const models = [
         skills: "High Fashion, Dance, Video"
     },
     {
-        id: "jing",
-        name: "JING",
+        id: "zoe",
+        name: "ZOE",
         mainImage: "models photos/newbreed 8 1.png",
-        thumbnail: "models photos/jing_thumb.png",
-        images: ["models photos/jing_fullbody_1.png", "models photos/jing_side_1.png"],
+        thumbnail: "models photos/zoe_thumb.png",
+        images: ["models photos/zoe_fullbody_1.png", "models photos/zoe_side_1.png"],
         stats: { height: "180cm", bust: "80cm", waist: "60cm", hips: "88cm", shoes: "40" },
         skills: "Editorial, Runway, Performance"
     }
