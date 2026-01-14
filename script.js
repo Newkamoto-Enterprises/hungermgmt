@@ -88,6 +88,15 @@ const models = [
         images: ["models photos/zoe_fullbody_1.png", "models photos/zoe_side_1.png"],
         stats: { height: "180cm", bust: "80cm", waist: "60cm", hips: "88cm", shoes: "40" },
         skills: "Editorial, Runway, Performance"
+    },
+    {
+        id: "geoffrey",
+        name: "GEOFFREY",
+        mainImage: "models photos/geoffrey_main.png",
+        thumbnail: "models photos/geoffrey_thumb.png",
+        images: ["models photos/geoffrey_fullbody_1.png", "models photos/geoffrey_side_1.png"],
+        stats: { height: "192cm", chest: "92cm", waist: "76cm", hips: "90cm", shoes: "45" },
+        skills: "Runway, High Fashion"
     }
 ];
 
