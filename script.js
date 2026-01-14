@@ -167,7 +167,10 @@ function showProfileView(id) {
                 ${statsHtml}
                 <div class="stat-row" style="margin-top: 20px;"><span class="stat-key">SKILLS</span> <span class="stat-value">${model.skills}</span></div>
             </div>
-            <button class="back-btn" onclick="closeProfile()">← BACK</button>
+            <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                <button class="back-btn" style="margin-top: 0; width: 100%; text-align: center;" onclick="copyLink()">SHARE LINK</button>
+                <button class="back-btn" style="margin-top: 0; width: 100%; text-align: center;" onclick="closeProfile()">← BACK</button>
+            </div>
         </div>
         <div class="profile-gallery">
             ${imagesHtml}
@@ -177,6 +180,12 @@ function showProfileView(id) {
     // Show profile, hide grid
     body.classList.add('view-profile');
     window.scrollTo(0, 0);
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('LINK COPIED');
+    });
 }
 
 function showGridView() {
