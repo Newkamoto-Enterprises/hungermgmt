@@ -134,6 +134,19 @@ function renderGrid() {
 }
 
 function openProfile(id) {
+    window.location.hash = id;
+}
+
+function closeProfile() {
+    // Check if we can go back in history to avoid empty hash stack
+    if (window.history.length > 1 && window.location.hash) {
+        window.history.back();
+    } else {
+        window.location.hash = '';
+    }
+}
+
+function showProfileView(id) {
     const model = models.find(m => m.id === id);
     if (!model) return;
 
@@ -166,10 +179,29 @@ function openProfile(id) {
     window.scrollTo(0, 0);
 }
 
-function closeProfile() {
+function showGridView() {
     body.classList.remove('view-profile');
     profileContent.innerHTML = '';
+    // Ensure grid is rendered (idempotent)
+    if (gridContainer.children.length === 0) {
+        renderGrid();
+    }
 }
 
-// Initial Render
-renderGrid();
+function handleRoute() {
+    const hash = window.location.hash.slice(1); // Remove '#'
+    if (hash) {
+        showProfileView(hash);
+    } else {
+        showGridView();
+    }
+}
+
+// Event Listeners
+window.addEventListener('hashchange', handleRoute);
+window.addEventListener('DOMContentLoaded', () => {
+    // Initial Render default grid first to ensure content is ready
+    renderGrid();
+    // Then handle any existing hash
+    handleRoute();
+});
