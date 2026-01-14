@@ -97,6 +97,15 @@ const models = [
         images: ["models photos/geoffrey_fullbody_1.png", "models photos/geoffrey_side_1.png"],
         stats: { height: "192cm", chest: "92cm", waist: "76cm", hips: "90cm", shoes: "45" },
         skills: "Runway, High Fashion"
+    },
+    {
+        id: "nadia",
+        name: "NADIA",
+        mainImage: "models photos/nadia_main.png",
+        thumbnail: "models photos/nadia_thumb.png",
+        images: ["models photos/nadia_fullbody_1.png", "models photos/nadia_side_1.png"],
+        stats: { height: "179cm", bust: "82cm", waist: "61cm", hips: "89cm", shoes: "39" },
+        skills: "Editorial, High Fashion"
     }
 ];
 
