@@ -107,6 +107,123 @@ const models = [
         stats: { height: "192cm", chest: "92cm", waist: "76cm", hips: "90cm", shoes: "45" },
         skills: "Runway, High Fashion"
     },
+    {
+        id: "alassane",
+        name: "ALASSANE",
+        mainImage: "models photos/alassane_thumb.png",
+        thumbnail: "models photos/alassane_thumb.png",
+        images: [],
+        stats: { height: "185cm", chest: "94cm", waist: "74cm", hips: "92cm", shoes: "43" },
+        skills: "Editorial, Avant-Garde"
+    },
+    {
+        id: "angelina",
+        name: "ANGELINA",
+        mainImage: "models photos/angelina_thumb.png",
+        thumbnail: "models photos/angelina_thumb.png",
+        images: [],
+        stats: { height: "173cm", bust: "78cm", waist: "58cm", hips: "86cm", shoes: "38" },
+        skills: "Commercial, Editorial"
+    },
+    {
+        id: "anton",
+        name: "ANTON",
+        mainImage: "models photos/anton_thumb.png",
+        thumbnail: "models photos/anton_thumb.png",
+        images: [],
+        stats: { height: "188cm", chest: "96cm", waist: "78cm", hips: "94cm", shoes: "44" },
+        skills: "Runway, Editorial"
+    },
+    {
+        id: "eric",
+        name: "ERIC",
+        mainImage: "models photos/eric_thumb.png",
+        thumbnail: "models photos/eric_thumb.png",
+        images: [],
+        stats: { height: "180cm", chest: "90cm", waist: "70cm", hips: "88cm", shoes: "42" },
+        skills: "Avant-Garde, Art"
+    },
+    {
+        id: "erik",
+        name: "ERIK",
+        mainImage: "models photos/erik_thumb.png",
+        thumbnail: "models photos/erik_thumb.png",
+        images: [],
+        stats: { height: "182cm", chest: "92cm", waist: "72cm", hips: "90cm", shoes: "43" },
+        skills: "Editorial, Commercial"
+    },
+    {
+        id: "ethan",
+        name: "ETHAN",
+        mainImage: "models photos/ethan_thumb.png",
+        thumbnail: "models photos/ethan_thumb.png",
+        images: [],
+        stats: { height: "184cm", chest: "91cm", waist: "71cm", hips: "89cm", shoes: "43" },
+        skills: "Streetwear, Music"
+    },
+    {
+        id: "isabel",
+        name: "ISABEL",
+        mainImage: "models photos/isabel_thumb.png",
+        thumbnail: "models photos/isabel_thumb.png",
+        images: [],
+        stats: { height: "176cm", bust: "80cm", waist: "60cm", hips: "88cm", shoes: "39" },
+        skills: "High Fashion, Editorial"
+    },
+    {
+        id: "margareth",
+        name: "MARGARETH",
+        mainImage: "models photos/margareth_thumb.png",
+        thumbnail: "models photos/margareth_thumb.png",
+        images: [],
+        stats: { height: "177cm", bust: "81cm", waist: "61cm", hips: "89cm", shoes: "39" },
+        skills: "Editorial, Runway"
+    },
+    {
+        id: "marika",
+        name: "MARIKA",
+        mainImage: "models photos/marika_thumb.png",
+        thumbnail: "models photos/marika_thumb.png",
+        images: [],
+        stats: { height: "174cm", bust: "82cm", waist: "62cm", hips: "90cm", shoes: "38" },
+        skills: "Commercial, Catalog"
+    },
+    {
+        id: "oliver",
+        name: "OLIVER",
+        mainImage: "models photos/oliver_thumb.png",
+        thumbnail: "models photos/oliver_thumb.png",
+        images: [],
+        stats: { height: "183cm", chest: "93cm", waist: "73cm", hips: "91cm", shoes: "43" },
+        skills: "Editorial, Runway"
+    },
+    {
+        id: "paulo",
+        name: "PAULO",
+        mainImage: "models photos/paulo_thumb.png",
+        thumbnail: "models photos/paulo_thumb.png",
+        images: [],
+        stats: { height: "181cm", chest: "90cm", waist: "70cm", hips: "88cm", shoes: "42" },
+        skills: "Commercial, Streetwear"
+    },
+    {
+        id: "pawel",
+        name: "PAWEL",
+        mainImage: "models photos/pawel_thumb.png",
+        thumbnail: "models photos/pawel_thumb.png",
+        images: [],
+        stats: { height: "186cm", chest: "92cm", waist: "74cm", hips: "90cm", shoes: "44" },
+        skills: "Avant-Garde, High Fashion"
+    },
+    {
+        id: "sonja",
+        name: "SONJA",
+        mainImage: "models photos/sonja_thumb.png",
+        thumbnail: "models photos/sonja_thumb.png",
+        images: [],
+        stats: { height: "178cm", bust: "79cm", waist: "59cm", hips: "87cm", shoes: "39" },
+        skills: "Editorial, High Fashion"
+    },
 
 ];
 
