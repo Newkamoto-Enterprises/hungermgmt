@@ -226,7 +226,7 @@ const body = document.body;
 function renderGrid() {
     gridContainer.innerHTML = '';
 
-    // Create all cards
+    // Create all cards (animation paused until triggered)
     models.forEach((model, index) => {
         const card = document.createElement('div');
         card.className = 'model-card';
@@ -250,19 +250,30 @@ function renderGrid() {
         gridContainer.appendChild(card);
     });
 
-    // Start cascade animation immediately (LQIPs are tiny, load instantly)
-    document.querySelectorAll('.model-card').forEach(card => {
-        card.classList.add('animate');
-    });
-
-    // Start swapping to thumbnails after a short delay
+    // Start swapping to thumbnails
     setTimeout(swapToThumbnails, 500);
 
-    // After thumbnails start loading, preload full-res images in background
+    // Preload full-res images in background
     preloadFullResImages();
 }
 
+// Trigger cascade animation on all cards
+function startCascadeAnimation() {
+    document.querySelectorAll('.model-card').forEach(card => {
+        card.classList.add('animate');
+    });
+}
+
 function openProfile(id) {
+    // Preload this model's full-res images immediately
+    const model = models.find(m => m.id === id);
+    if (model) {
+        // Preload mainImage and all profile images
+        [model.mainImage, ...model.images].forEach(src => {
+            const img = new Image();
+            img.src = encodeURI(src);
+        });
+    }
     window.location.hash = id;
 }
 
@@ -378,15 +389,26 @@ function preloadFullResImages() {
 // Event Listeners
 window.addEventListener('hashchange', handleRoute);
 window.addEventListener('DOMContentLoaded', () => {
+    // Reset scroll position
+    window.scrollTo(0, 0);
+
     // Render grid immediately so images start downloading
     renderGrid();
 
-    // Hide loading screen after 2 seconds
+    // Hide loading screen after 2 seconds, THEN start cascade
     setTimeout(() => {
         const loadingOverlay = document.getElementById('loading-overlay');
         loadingOverlay.classList.add('hidden');
 
+        // Start cascade animation AFTER spinner hides
+        startCascadeAnimation();
+
         // Handle any existing hash after loading screen fades
         handleRoute();
     }, 2000);
+});
+
+// Reset scroll on every navigation
+window.addEventListener('hashchange', () => {
+    window.scrollTo(0, 0);
 });
