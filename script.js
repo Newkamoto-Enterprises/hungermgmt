@@ -198,11 +198,11 @@ const models = [
         skills: "Editorial, Runway"
     },
     {
-        id: "paulo",
-        name: "PAULO",
-        mainImage: "models photos/paulo_thumb.png",
-        thumbnail: "models photos/paulo_thumb.png",
-        images: ["models photos/paulo_fullbody_1.png", "models photos/paulo_side_1.png"],
+        id: "kareem",
+        name: "KAREEM",
+        mainImage: "models photos/kareem_thumb.png",
+        thumbnail: "models photos/kareem_thumb.png",
+        images: ["models photos/kareem_fullbody_1.png", "models photos/kareem_side_1.png"],
         stats: { height: "181cm", chest: "90cm", waist: "70cm", hips: "88cm", shoes: "42" },
         skills: "Commercial, Streetwear"
     },
