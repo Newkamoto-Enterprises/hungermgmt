@@ -94,8 +94,6 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    /* Neutral placeholder background - never blank */
-    background: #e8e8e8;
     /* Staggered fade-in animation */
     opacity: 0;
     transform: translateY(20px);

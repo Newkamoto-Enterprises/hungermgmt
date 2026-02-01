@@ -230,18 +230,28 @@ function renderGrid() {
         card.className = 'model-card';
         card.onclick = () => openProfile(model.id);
 
-        // Encode URI component for paths with spaces
-        const imagePath = encodeURI(model.thumbnail);
+        // LQIP path (tiny 20x15 placeholder) - loads instantly
+        const lqipPath = encodeURI(`models photos/lqip/${model.id}_lqip.png`);
+        // Full thumbnail path
+        const thumbPath = encodeURI(model.thumbnail);
 
         // Staggered animation delay: 50ms per card for cascading effect
         card.style.animationDelay = `${index * 50}ms`;
 
+        // Two-layer image: LQIP as src (loads instantly), thumbnail swaps in on load
         card.innerHTML = `
             <div class="model-name">${model.name}</div>
-            <img src="${imagePath}" alt="${model.name}" class="model-image" onload="this.classList.add('loaded')">
+            <img src="${lqipPath}" 
+                 data-src="${thumbPath}" 
+                 alt="${model.name}" 
+                 class="model-image" 
+                 onload="if(!this.dataset.loaded){this.dataset.loaded='lqip'}">
         `;
         gridContainer.appendChild(card);
     });
+
+    // After LQIP loads, swap to real thumbnails
+    setTimeout(swapToThumbnails, 100);
 
     // After thumbnails start loading, preload full-res images in background
     preloadFullResImages();
@@ -318,6 +328,21 @@ function handleRoute() {
     } else {
         showGridView();
     }
+}
+
+// Swap LQIP images to full thumbnails
+function swapToThumbnails() {
+    const images = document.querySelectorAll('.model-image[data-src]');
+    images.forEach(img => {
+        const thumbSrc = img.dataset.src;
+        // Create a new image to preload the thumbnail
+        const preloader = new Image();
+        preloader.onload = () => {
+            img.src = thumbSrc;
+            img.classList.add('loaded');
+        };
+        preloader.src = thumbSrc;
+    });
 }
 
 // Preload full-resolution images in background for instant profile loading
