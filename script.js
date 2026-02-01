@@ -348,8 +348,15 @@ function preloadFullResImages() {
 // Event Listeners
 window.addEventListener('hashchange', handleRoute);
 window.addEventListener('DOMContentLoaded', () => {
-    // Initial Render default grid first to ensure content is ready
+    // Render grid immediately so images start downloading
     renderGrid();
-    // Then handle any existing hash
-    handleRoute();
+
+    // Hide loading screen after 2 seconds
+    setTimeout(() => {
+        const loadingOverlay = document.getElementById('loading-overlay');
+        loadingOverlay.classList.add('hidden');
+
+        // Handle any existing hash after loading screen fades
+        handleRoute();
+    }, 2000);
 });
