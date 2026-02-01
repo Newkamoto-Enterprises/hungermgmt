@@ -63,6 +63,15 @@ const models = [
         skills: "Classic, Suit, Commercial"
     },
     {
+        id: "eric",
+        name: "ERIC",
+        mainImage: "models photos/eric_thumb.png",
+        thumbnail: "models photos/eric_thumb.png",
+        images: ["models photos/eric_fullbody_1.png", "models photos/eric_side_1.png"],
+        stats: { height: "180cm", chest: "90cm", waist: "70cm", hips: "88cm", shoes: "42" },
+        skills: "Avant-Garde, Art"
+    },
+    {
         id: "erik",
         name: "ERIK",
         mainImage: "models photos/erik_thumb.png",
