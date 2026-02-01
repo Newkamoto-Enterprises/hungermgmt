@@ -395,17 +395,11 @@ window.addEventListener('DOMContentLoaded', () => {
     // Render grid immediately so images start downloading
     renderGrid();
 
-    // Hide loading screen after 2 seconds, THEN start cascade
-    setTimeout(() => {
-        const loadingOverlay = document.getElementById('loading-overlay');
-        loadingOverlay.classList.add('hidden');
+    // Start cascade animation immediately
+    startCascadeAnimation();
 
-        // Start cascade animation AFTER spinner hides
-        startCascadeAnimation();
-
-        // Handle any existing hash after loading screen fades
-        handleRoute();
-    }, 2000);
+    // Handle any existing hash
+    handleRoute();
 });
 
 // Reset scroll on every navigation

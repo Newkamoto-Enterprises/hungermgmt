@@ -7,41 +7,6 @@
     <title>HUNGER MANAGEMENT</title>
     <!-- Critical CSS inlined for instant availability -->
     <style>
-        /* Loading Screen - must be first */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.4s ease;
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .spinner {
-            width: 32px;
-            height: 32px;
-            border: 3px solid #e0e0e0;
-            border-top-color: #333;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
         /* Card animation - critical for cascade effect */
         .model-card {
             opacity: 0;
@@ -65,11 +30,6 @@
 </head>
 
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-overlay" id="loading-overlay">
-        <div class="spinner"></div>
-    </div>
-
     <header class="header">
         <h1><a href="#" onclick="closeProfile(); return false;" class="logo-link">HUNGER MANAGEMENT</a></h1>
     </header>
