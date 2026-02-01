@@ -94,10 +94,15 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    /* Staggered fade-in animation */
+    /* Staggered fade-in animation - paused until LQIPs load */
     opacity: 0;
     transform: translateY(20px);
     animation: cardFadeIn 0.5s ease forwards;
+    animation-play-state: paused;
+}
+
+.model-card.animate {
+    animation-play-state: running;
 }
 
 @keyframes cardFadeIn {

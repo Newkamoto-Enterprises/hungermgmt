@@ -225,33 +225,51 @@ const body = document.body;
 
 function renderGrid() {
     gridContainer.innerHTML = '';
+
+    // Preload all LQIPs first
+    const lqipPromises = models.map((model) => {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = resolve;
+            img.onerror = resolve; // Continue even if one fails
+            img.src = encodeURI(`models photos/lqip/${model.id}_lqip.png`);
+        });
+    });
+
+    // Create all cards (hidden, animation paused)
     models.forEach((model, index) => {
         const card = document.createElement('div');
         card.className = 'model-card';
         card.onclick = () => openProfile(model.id);
 
-        // LQIP path (tiny 20x15 placeholder) - loads instantly
+        // LQIP path (tiny 20x15 placeholder) - already preloaded
         const lqipPath = encodeURI(`models photos/lqip/${model.id}_lqip.png`);
         // Full thumbnail path
         const thumbPath = encodeURI(model.thumbnail);
 
-        // Staggered animation delay: 50ms per card for cascading effect
-        card.style.animationDelay = `${index * 50}ms`;
+        // Staggered animation delay: 60ms per card for smooth cascading
+        card.style.animationDelay = `${index * 60}ms`;
 
-        // Two-layer image: LQIP as src (loads instantly), thumbnail swaps in on load
         card.innerHTML = `
             <div class="model-name">${model.name}</div>
             <img src="${lqipPath}" 
                  data-src="${thumbPath}" 
                  alt="${model.name}" 
-                 class="model-image" 
-                 onload="if(!this.dataset.loaded){this.dataset.loaded='lqip'}">
+                 class="model-image">
         `;
         gridContainer.appendChild(card);
     });
 
-    // After LQIP loads, swap to real thumbnails
-    setTimeout(swapToThumbnails, 100);
+    // Once all LQIPs are loaded, start the cascade animation
+    Promise.all(lqipPromises).then(() => {
+        // Trigger cascade animation on all cards
+        document.querySelectorAll('.model-card').forEach(card => {
+            card.classList.add('animate');
+        });
+
+        // Start swapping to thumbnails after animation begins
+        setTimeout(swapToThumbnails, 300);
+    });
 
     // After thumbnails start loading, preload full-res images in background
     preloadFullResImages();
