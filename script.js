@@ -235,10 +235,13 @@ function renderGrid() {
 
         card.innerHTML = `
             <div class="model-name">${model.name}</div>
-            <img src="${imagePath}" alt="${model.name}" class="model-image" loading="lazy">
+            <img src="${imagePath}" alt="${model.name}" class="model-image" loading="lazy" onload="this.classList.add('loaded')">
         `;
         gridContainer.appendChild(card);
     });
+
+    // After thumbnails start loading, preload full-res images in background
+    preloadFullResImages();
 }
 
 function openProfile(id) {
@@ -312,6 +315,31 @@ function handleRoute() {
     } else {
         showGridView();
     }
+}
+
+// Preload full-resolution images in background for instant profile loading
+function preloadFullResImages() {
+    // Wait a bit for thumbnails to finish loading first
+    setTimeout(() => {
+        const allImages = [];
+
+        // Collect all full-res images (mainImage + images array)
+        models.forEach(model => {
+            allImages.push(model.mainImage);
+            model.images.forEach(img => allImages.push(img));
+        });
+
+        // Preload each image in background with low priority
+        allImages.forEach((src, index) => {
+            // Stagger the loading to avoid overwhelming the browser
+            setTimeout(() => {
+                const img = new Image();
+                img.src = encodeURI(src);
+            }, index * 50); // 50ms between each image
+        });
+
+        console.log(`Preloading ${allImages.length} full-res images in background...`);
+    }, 1000); // Start 1 second after grid renders
 }
 
 // Event Listeners
