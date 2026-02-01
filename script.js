@@ -63,15 +63,6 @@ const models = [
         skills: "Classic, Suit, Commercial"
     },
     {
-        id: "eric",
-        name: "ERIC",
-        mainImage: "models photos/eric_thumb.png",
-        thumbnail: "models photos/eric_thumb.png",
-        images: ["models photos/eric_fullbody_1.png", "models photos/eric_side_1.png"],
-        stats: { height: "180cm", chest: "90cm", waist: "70cm", hips: "88cm", shoes: "42" },
-        skills: "Avant-Garde, Art"
-    },
-    {
         id: "erik",
         name: "ERIK",
         mainImage: "models photos/erik_thumb.png",
@@ -205,6 +196,15 @@ const models = [
         images: ["models photos/sonja_fullbody_1.png", "models photos/sonja_side_1.png"],
         stats: { height: "178cm", bust: "79cm", waist: "59cm", hips: "87cm", shoes: "39" },
         skills: "Editorial, High Fashion"
+    },
+    {
+        id: "tommy",
+        name: "TOMMY",
+        mainImage: "models photos/tommy_thumb.png",
+        thumbnail: "models photos/tommy_thumb.png",
+        images: ["models photos/tommy_fullbody_1.png", "models photos/tommy_side_1.png"],
+        stats: { height: "180cm", chest: "90cm", waist: "70cm", hips: "88cm", shoes: "42" },
+        skills: "Avant-Garde, Art"
     },
     {
         id: "wan",
