@@ -225,13 +225,16 @@ const body = document.body;
 
 function renderGrid() {
     gridContainer.innerHTML = '';
-    models.forEach(model => {
+    models.forEach((model, index) => {
         const card = document.createElement('div');
         card.className = 'model-card';
         card.onclick = () => openProfile(model.id);
 
         // Encode URI component for paths with spaces
         const imagePath = encodeURI(model.thumbnail);
+
+        // Staggered animation delay: 50ms per card for cascading effect
+        card.style.animationDelay = `${index * 50}ms`;
 
         card.innerHTML = `
             <div class="model-name">${model.name}</div>
