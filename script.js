@@ -226,23 +226,13 @@ const body = document.body;
 function renderGrid() {
     gridContainer.innerHTML = '';
 
-    // Preload all LQIPs first
-    const lqipPromises = models.map((model) => {
-        return new Promise((resolve) => {
-            const img = new Image();
-            img.onload = resolve;
-            img.onerror = resolve; // Continue even if one fails
-            img.src = encodeURI(`models photos/lqip/${model.id}_lqip.png`);
-        });
-    });
-
-    // Create all cards (hidden, animation paused)
+    // Create all cards
     models.forEach((model, index) => {
         const card = document.createElement('div');
         card.className = 'model-card';
         card.onclick = () => openProfile(model.id);
 
-        // LQIP path (tiny 20x15 placeholder) - already preloaded
+        // LQIP path (tiny 20x15 placeholder) - loads very fast
         const lqipPath = encodeURI(`models photos/lqip/${model.id}_lqip.png`);
         // Full thumbnail path
         const thumbPath = encodeURI(model.thumbnail);
@@ -260,16 +250,13 @@ function renderGrid() {
         gridContainer.appendChild(card);
     });
 
-    // Once all LQIPs are loaded, start the cascade animation
-    Promise.all(lqipPromises).then(() => {
-        // Trigger cascade animation on all cards
-        document.querySelectorAll('.model-card').forEach(card => {
-            card.classList.add('animate');
-        });
-
-        // Start swapping to thumbnails after animation begins
-        setTimeout(swapToThumbnails, 300);
+    // Start cascade animation immediately (LQIPs are tiny, load instantly)
+    document.querySelectorAll('.model-card').forEach(card => {
+        card.classList.add('animate');
     });
+
+    // Start swapping to thumbnails after a short delay
+    setTimeout(swapToThumbnails, 500);
 
     // After thumbnails start loading, preload full-res images in background
     preloadFullResImages();
