@@ -238,7 +238,7 @@ function renderGrid() {
 
         card.innerHTML = `
             <div class="model-name">${model.name}</div>
-            <img src="${imagePath}" alt="${model.name}" class="model-image" loading="lazy" onload="this.classList.add('loaded')">
+            <img src="${imagePath}" alt="${model.name}" class="model-image" onload="this.classList.add('loaded')">
         `;
         gridContainer.appendChild(card);
     });
