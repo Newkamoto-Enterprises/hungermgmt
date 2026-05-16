@@ -69,6 +69,45 @@ async function assertVisibleTextIsMonochrome(page, label) {
   }
 }
 
+async function assertExcludedModelsAreAbsent(page) {
+  const modelNames = await page.evaluate(() =>
+    Array.from(document.querySelectorAll(".model-name"), (element) => element.textContent.trim()),
+  );
+
+  assert.ok(!modelNames.includes("ESMERALDA"), "Esmeralda should not appear in the homepage roster");
+}
+
+async function assertModelNameHasGlassTreatment(page) {
+  const treatment = await page.locator(".model-name").first().evaluate((element) => {
+    const style = window.getComputedStyle(element);
+    return {
+      backgroundColor: style.backgroundColor,
+      borderColor: style.borderColor,
+      borderRadius: Number.parseFloat(style.borderRadius),
+      backdropFilter: style.backdropFilter || style.webkitBackdropFilter,
+    };
+  });
+
+  assert.match(
+    treatment.backgroundColor.replace(/\s+/g, ""),
+    /^rgba\(255,255,255,0\.[0-9]+\)$/,
+    `model name background should be translucent white, got ${treatment.backgroundColor}`,
+  );
+  assert.ok(
+    treatment.borderColor !== "rgb(0, 0, 0)",
+    `model name border should be light grey, got ${treatment.borderColor}`,
+  );
+  assert.ok(
+    treatment.borderRadius >= 999,
+    `model name corners should be strongly rounded, got ${treatment.borderRadius}px`,
+  );
+  assert.match(
+    treatment.backdropFilter,
+    /blur\(/,
+    `model name should blur the image behind it, got ${treatment.backdropFilter}`,
+  );
+}
+
 const launchOptions = {};
 const chromePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
@@ -86,6 +125,8 @@ try {
 
   await assertNoHorizontalScroll(page, "mobile homepage");
   await assertVisibleTextIsMonochrome(page, "mobile homepage");
+  await assertExcludedModelsAreAbsent(page);
+  await assertModelNameHasGlassTreatment(page);
 
   await page.locator(".model-card").first().click();
   await page.waitForSelector(".profile-name");
