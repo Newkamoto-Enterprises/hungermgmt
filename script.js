@@ -72,15 +72,6 @@ const models = [
         skills: "Editorial, Commercial"
     },
     {
-        id: "esmeralda",
-        name: "ESMERALDA",
-        mainImage: "models photos/newbreed 5 1.png",
-        thumbnail: "models photos/esmeralda_thumb.png",
-        images: ["models photos/esmeralda_fullbody_1.png", "models photos/esmeralda_side_1.png"],
-        stats: { height: "177cm", bust: "79cm", waist: "59cm", hips: "87cm", shoes: "39" },
-        skills: "High Fashion, Dance, Video"
-    },
-    {
         id: "ethan",
         name: "ETHAN",
         mainImage: "models photos/ethan_thumb.png",
