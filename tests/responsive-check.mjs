@@ -74,7 +74,12 @@ async function assertExcludedModelsAreAbsent(page) {
     Array.from(document.querySelectorAll(".model-name"), (element) => element.textContent.trim()),
   );
 
-  assert.ok(!modelNames.includes("ESMERALDA"), "Esmeralda should not appear in the homepage roster");
+  for (const excludedModelName of ["ALINA", "JACOB", "ESMERALDA"]) {
+    assert.ok(
+      !modelNames.includes(excludedModelName),
+      `${excludedModelName} should not appear in the homepage roster`,
+    );
+  }
 }
 
 async function assertModelNameUsesDifferenceBlend(page) {

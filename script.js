@@ -9,15 +9,6 @@ const models = [
         skills: "Editorial, Avant-Garde"
     },
     {
-        id: "alina",
-        name: "ALINA",
-        mainImage: "models photos/16a2b21b-ddc6-4086-9b40-11913c41fdf3 1.png",
-        thumbnail: "models photos/alina_thumb.png",
-        images: ["models photos/alina_fullbody_4.png", "models photos/alina_side_3.png"],
-        stats: { height: "178cm", bust: "80cm", waist: "60cm", hips: "88cm", shoes: "39" },
-        skills: "Runway, Editorial, Dance"
-    },
-    {
         id: "angelina",
         name: "ANGELINA",
         mainImage: "models photos/angelina_thumb.png",
@@ -106,15 +97,6 @@ const models = [
         images: ["models photos/isabel_fullbody_1.png", "models photos/isabel_side_1.png"],
         stats: { height: "176cm", bust: "80cm", waist: "60cm", hips: "88cm", shoes: "39" },
         skills: "High Fashion, Editorial"
-    },
-    {
-        id: "jacob",
-        name: "JACOB",
-        mainImage: "models photos/89435bcb-3d58-4757-a29a-3c706cfd2a00 2.png",
-        thumbnail: "models photos/jacob_thumb.png",
-        images: ["models photos/jacob_fullbody_1.png", "models photos/jacob_side_1.png"],
-        stats: { height: "188cm", chest: "98cm", waist: "78cm", hips: "96cm", shoes: "45" },
-        skills: "Runway, Streetwear, Skate"
     },
     {
         id: "kareem",
@@ -288,7 +270,10 @@ function closeProfile() {
 
 function showProfileView(id) {
     const model = models.find(m => m.id === id);
-    if (!model) return;
+    if (!model) {
+        showGridView();
+        return;
+    }
 
     // Populate profile
     let statsHtml = '';
