@@ -287,12 +287,12 @@ function openProfile(id) {
 }
 
 function closeProfile() {
-    // Check if we can go back in history to avoid empty hash stack
-    if (window.history.length > 1 && window.location.hash) {
-        window.history.back();
-    } else {
+    if (window.location.hash) {
         window.location.hash = '';
+        return;
     }
+
+    showGridView();
 }
 
 function showProfileView(id) {
@@ -314,15 +314,19 @@ function showProfileView(id) {
             <h2 class="profile-name">${model.name}</h2>
             <div class="profile-stats">
                 ${statsHtml}
-                <div class="stat-row" style="margin-top: 20px;"><span class="stat-key">SKILLS</span> <span class="stat-value">${model.skills}</span></div>
+                <div class="stat-row stat-row-skills"><span class="stat-key">SKILLS</span> <span class="stat-value">${model.skills}</span></div>
             </div>
-            <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 10px; width: 100%;">
-                <button class="back-btn" style="margin-top: 0; width: 100%; text-align: center;" onclick="copyLink()">SHARE LINK</button>
-                <button class="back-btn" style="margin-top: 0; width: 100%; text-align: center;" onclick="closeProfile()">← BACK</button>
+            <div class="profile-actions">
+                <button class="back-btn" onclick="copyLink()">SHARE LINK</button>
+                <button class="back-btn desktop-back-btn" onclick="closeProfile()">BACK HOME</button>
             </div>
         </div>
         <div class="profile-gallery">
             ${imagesHtml}
+            <button class="mobile-home-card" onclick="closeProfile()" aria-label="Back to homepage">
+                <span class="mobile-home-card-brand">HUNGER MANAGEMENT</span>
+                <span class="mobile-home-card-action">BACK TO HOMEPAGE</span>
+            </button>
         </div>
     `;
 

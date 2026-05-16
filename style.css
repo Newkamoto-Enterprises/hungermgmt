@@ -5,10 +5,29 @@
     box-sizing: border-box;
 }
 
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
     background-color: #fff;
+    color: #000;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+a,
+a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+button {
     color: #000;
 }
 
@@ -36,8 +55,8 @@ body {
 .spinner {
     width: 32px;
     height: 32px;
-    border: 3px solid #e0e0e0;
-    border-top-color: #333;
+    border: 3px solid #fff;
+    border-top-color: #000;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
@@ -56,7 +75,7 @@ h1 {
     border-bottom: 2px solid #000;
     padding: 20px 0;
     line-height: 0.9;
-    letter-spacing: -2px;
+    letter-spacing: 0;
 }
 
 .logo-link {
@@ -78,10 +97,12 @@ h1 {
 .grid-container {
     display: grid;
     /* Responsive columns: auto-fill min 300px, or adjust as needed for brutal look */
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
     border-top: 1px solid #000;
     /* Ensure top closure if header border isn't enough */
     border-left: 1px solid #000;
+    width: 100%;
+    max-width: 100%;
 }
 
 .model-card {
@@ -94,6 +115,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    contain: paint;
     /* Staggered fade-in animation - paused until LQIPs load */
     opacity: 0;
     transform: translateY(20px);
@@ -122,14 +144,11 @@ h1 {
     display: block;
     filter: grayscale(100%) blur(10px);
     /* Start blurred, transition to sharp when loaded */
-    transition: filter 0.4s ease, transform 0.4s ease;
-    transform: scale(1.05);
-    /* Slight scale to hide blur edges */
+    transition: filter 0.4s ease;
 }
 
 .model-image.loaded {
     filter: grayscale(100%) blur(0);
-    transform: scale(1);
 }
 
 .model-card:hover .model-image.loaded {
@@ -157,9 +176,11 @@ h1 {
     left: 0;
     width: 100%;
     height: 100vh;
+    height: 100dvh;
     background: #fff;
     z-index: 200;
     overflow-y: auto;
+    overflow-x: hidden;
     display: none;
 }
 
@@ -175,6 +196,9 @@ body.view-profile .grid-container {
 .profile-content {
     display: flex;
     min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    max-width: 100%;
 }
 
 .profile-sidebar {
@@ -187,16 +211,20 @@ body.view-profile .grid-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 0 0 300px;
 }
 
 .profile-gallery {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
 }
 
 .profile-photo {
     width: 100%;
+    max-width: 100%;
+    height: auto;
     display: block;
     border-bottom: 1px solid #000;
     /* Fast fade-in with smooth acceleration */
@@ -219,24 +247,45 @@ body.view-profile .grid-container {
     line-height: 1;
     margin-bottom: 40px;
     text-transform: uppercase;
+    letter-spacing: 0;
+    overflow-wrap: anywhere;
 }
 
 .stat-row {
     display: flex;
     justify-content: space-between;
+    gap: 16px;
     margin-bottom: 10px;
     font-size: 1rem;
-    border-bottom: 1px solid #eee;
-    /* Very subtle line for stats */
+    border-bottom: 1px solid #000;
     padding-bottom: 2px;
 }
 
+.stat-row-skills {
+    margin-top: 20px;
+}
+
 .stat-key {
-    color: #666;
+    color: #000;
+    flex: 0 0 auto;
+}
+
+.stat-value {
+    color: #000;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    text-align: right;
+}
+
+.profile-actions {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
 }
 
 .back-btn {
-    margin-top: 40px;
     background: none;
     border: 1px solid #000;
     padding: 10px 20px;
@@ -245,7 +294,8 @@ body.view-profile .grid-container {
     font-size: 1.2rem;
     cursor: pointer;
     text-transform: uppercase;
-    align-self: flex-start;
+    width: 100%;
+    text-align: center;
 }
 
 .back-btn:hover {
@@ -253,17 +303,100 @@ body.view-profile .grid-container {
     color: #fff;
 }
 
+.mobile-home-card {
+    display: none;
+    width: 100%;
+    min-height: 150px;
+    border: 0;
+    border-top: 1px solid #000;
+    background: #000;
+    color: #fff;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+.mobile-home-card:hover,
+.mobile-home-card:focus-visible {
+    background: #fff;
+    color: #000;
+    outline: 0;
+}
+
+.mobile-home-card-brand,
+.mobile-home-card-action {
+    display: block;
+    color: inherit;
+    letter-spacing: 0;
+}
+
+.mobile-home-card-brand {
+    font-size: 2rem;
+    line-height: 0.95;
+}
+
+.mobile-home-card-action {
+    margin-top: 16px;
+    font-size: 1rem;
+}
+
 @media (max-width: 768px) {
+    h1 {
+        font-size: 2.4rem;
+        padding: 14px 10px;
+    }
+
+    .model-name {
+        top: 8px;
+        left: 8px;
+        max-width: calc(100% - 16px);
+        font-size: 1rem;
+        overflow-wrap: anywhere;
+    }
+
     .profile-content {
         flex-direction: column;
     }
 
     .profile-sidebar {
         width: 100%;
+        flex: 0 0 auto;
         height: auto;
         position: relative;
         border-right: none;
         border-bottom: 1px solid #000;
+        padding: 16px;
+    }
+
+    .profile-name {
+        font-size: 2.5rem;
+        margin-bottom: 24px;
+    }
+
+    .profile-actions {
+        margin-top: 24px;
+    }
+
+    .desktop-back-btn {
+        display: none;
+    }
+
+    .mobile-home-card {
+        display: block;
+    }
+}
+
+@media (max-width: 360px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .profile-name,
+    .mobile-home-card-brand {
+        font-size: 2.2rem;
     }
 }
 
