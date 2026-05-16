@@ -1,3 +1,19 @@
+function generatedModel(id, name, stats, skills) {
+    return {
+        id,
+        name,
+        mainImage: `models photos/generated/${id}_portrait.png`,
+        thumbnail: `models photos/generated/${id}_portrait.png`,
+        images: [
+            `models photos/generated/${id}_fullbody.png`,
+            `models photos/generated/${id}_angle.png`,
+            `models photos/generated/${id}_polaroid.png`
+        ],
+        stats,
+        skills
+    };
+}
+
 const models = [
     {
         id: "alassane",
@@ -8,6 +24,12 @@ const models = [
         stats: { height: "185cm", chest: "94cm", waist: "74cm", hips: "92cm", shoes: "43" },
         skills: "Editorial, Avant-Garde"
     },
+    generatedModel(
+        "alex",
+        "ALEX",
+        { height: "181cm", chest: "89cm", waist: "70cm", hips: "88cm", shoes: "42" },
+        "Editorial, Casting"
+    ),
     {
         id: "angelina",
         name: "ANGELINA",
@@ -26,6 +48,12 @@ const models = [
         stats: { height: "188cm", chest: "96cm", waist: "78cm", hips: "94cm", shoes: "44" },
         skills: "Runway, Editorial"
     },
+    generatedModel(
+        "chloe",
+        "CHLOE",
+        { height: "176cm", bust: "79cm", waist: "60cm", hips: "88cm", shoes: "39" },
+        "Editorial, Runway"
+    ),
     {
         id: "arthur",
         name: "ARTHUR",
@@ -53,6 +81,12 @@ const models = [
         stats: { height: "185cm", chest: "95cm", waist: "75cm", hips: "93cm", shoes: "43" },
         skills: "Classic, Suit, Commercial"
     },
+    generatedModel(
+        "erica",
+        "ERICA",
+        { height: "174cm", bust: "81cm", waist: "61cm", hips: "89cm", shoes: "39" },
+        "Editorial, Casting"
+    ),
     {
         id: "erik",
         name: "ERIK",
@@ -71,15 +105,12 @@ const models = [
         stats: { height: "184cm", chest: "91cm", waist: "71cm", hips: "89cm", shoes: "43" },
         skills: "Streetwear, Music"
     },
-    {
-        id: "geoffrey",
-        name: "GEOFFREY",
-        mainImage: "models photos/geoffrey_main.png",
-        thumbnail: "models photos/geoffrey_thumb.png",
-        images: ["models photos/geoffrey_fullbody_1.png", "models photos/geoffrey_side_1.png"],
-        stats: { height: "192cm", chest: "92cm", waist: "76cm", hips: "90cm", shoes: "45" },
-        skills: "Runway, High Fashion"
-    },
+    generatedModel(
+        "geoffrey",
+        "GEOFFREY",
+        { height: "192cm", chest: "92cm", waist: "76cm", hips: "90cm", shoes: "45" },
+        "Runway, High Fashion"
+    ),
     {
         id: "harper",
         name: "HARPER",
@@ -89,6 +120,12 @@ const models = [
         stats: { height: "176cm", bust: "82cm", waist: "63cm", hips: "89cm", shoes: "38" },
         skills: "Editorial, Catalog, Swim"
     },
+    generatedModel(
+        "imani",
+        "IMANI",
+        { height: "177cm", bust: "82cm", waist: "62cm", hips: "90cm", shoes: "39" },
+        "Editorial, Commercial"
+    ),
     {
         id: "isabel",
         name: "ISABEL",
@@ -125,6 +162,12 @@ const models = [
         stats: { height: "177cm", bust: "81cm", waist: "61cm", hips: "89cm", shoes: "39" },
         skills: "Editorial, Runway"
     },
+    generatedModel(
+        "marco",
+        "MARCO",
+        { height: "186cm", chest: "93cm", waist: "74cm", hips: "91cm", shoes: "44" },
+        "Editorial, Runway"
+    ),
     {
         id: "marika",
         name: "MARIKA",
@@ -143,6 +186,12 @@ const models = [
         stats: { height: "179cm", bust: "82cm", waist: "61cm", hips: "89cm", shoes: "39" },
         skills: "Editorial, High Fashion"
     },
+    generatedModel(
+        "nils",
+        "NILS",
+        { height: "184cm", chest: "91cm", waist: "72cm", hips: "90cm", shoes: "43" },
+        "Editorial, Casting"
+    ),
     {
         id: "oliver",
         name: "OLIVER",
@@ -161,6 +210,12 @@ const models = [
         stats: { height: "186cm", chest: "92cm", waist: "74cm", hips: "90cm", shoes: "44" },
         skills: "Avant-Garde, High Fashion"
     },
+    generatedModel(
+        "samuel",
+        "SAMUEL",
+        { height: "183cm", chest: "92cm", waist: "73cm", hips: "91cm", shoes: "43" },
+        "Editorial, Commercial"
+    ),
     {
         id: "sonja",
         name: "SONJA",
@@ -188,6 +243,18 @@ const models = [
         stats: { height: "179cm", bust: "81cm", waist: "61cm", hips: "88cm", shoes: "40" },
         skills: "High Fashion, Art, Music"
     },
+    generatedModel(
+        "yonathan",
+        "YONATHAN",
+        { height: "185cm", chest: "94cm", waist: "75cm", hips: "92cm", shoes: "44" },
+        "Editorial, Casting"
+    ),
+    generatedModel(
+        "yurii",
+        "YURII",
+        { height: "186cm", chest: "92cm", waist: "73cm", hips: "91cm", shoes: "44" },
+        "Runway, Editorial"
+    ),
     {
         id: "zoe",
         name: "ZOE",
