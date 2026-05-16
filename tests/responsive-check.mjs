@@ -77,34 +77,41 @@ async function assertExcludedModelsAreAbsent(page) {
   assert.ok(!modelNames.includes("ESMERALDA"), "Esmeralda should not appear in the homepage roster");
 }
 
-async function assertModelNameHasGlassTreatment(page) {
+async function assertModelNameUsesDifferenceBlend(page) {
   const treatment = await page.locator(".model-name").first().evaluate((element) => {
     const style = window.getComputedStyle(element);
     return {
       backgroundColor: style.backgroundColor,
-      borderColor: style.borderColor,
-      borderRadius: Number.parseFloat(style.borderRadius),
+      borderStyle: style.borderStyle,
+      boxShadow: style.boxShadow,
       backdropFilter: style.backdropFilter || style.webkitBackdropFilter,
+      mixBlendMode: style.mixBlendMode,
     };
   });
 
-  assert.match(
-    treatment.backgroundColor.replace(/\s+/g, ""),
-    /^rgba\(255,255,255,0\.[0-9]+\)$/,
-    `model name background should be translucent white, got ${treatment.backgroundColor}`,
-  );
   assert.ok(
-    treatment.borderColor !== "rgb(0, 0, 0)",
-    `model name border should be light grey, got ${treatment.borderColor}`,
+    treatment.backgroundColor === "rgba(0, 0, 0, 0)" || treatment.backgroundColor === "transparent",
+    `model name should have no background, got ${treatment.backgroundColor}`,
   );
-  assert.ok(
-    treatment.borderRadius >= 999,
-    `model name corners should be strongly rounded, got ${treatment.borderRadius}px`,
+  assert.equal(
+    treatment.borderStyle,
+    "none",
+    `model name should have no border, got ${treatment.borderStyle}`,
   );
-  assert.match(
+  assert.equal(
+    treatment.boxShadow,
+    "none",
+    `model name should have no shadow box, got ${treatment.boxShadow}`,
+  );
+  assert.equal(
     treatment.backdropFilter,
-    /blur\(/,
-    `model name should blur the image behind it, got ${treatment.backdropFilter}`,
+    "none",
+    `model name should not use background blur, got ${treatment.backdropFilter}`,
+  );
+  assert.equal(
+    treatment.mixBlendMode,
+    "difference",
+    `model name should use difference blend mode, got ${treatment.mixBlendMode}`,
   );
 }
 
@@ -126,7 +133,7 @@ try {
   await assertNoHorizontalScroll(page, "mobile homepage");
   await assertVisibleTextIsMonochrome(page, "mobile homepage");
   await assertExcludedModelsAreAbsent(page);
-  await assertModelNameHasGlassTreatment(page);
+  await assertModelNameUsesDifferenceBlend(page);
 
   await page.locator(".model-card").first().click();
   await page.waitForSelector(".profile-name");
