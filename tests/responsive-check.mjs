@@ -7,6 +7,24 @@ const { chromium } = require("playwright");
 
 const pageUrl = new URL("../index.html", import.meta.url).href;
 
+async function assertVersionedStaticAssets(page) {
+  const assets = await page.evaluate(() => ({
+    stylesheet: document.querySelector('link[rel="stylesheet"]')?.getAttribute("href"),
+    script: document.querySelector("script[src]")?.getAttribute("src"),
+  }));
+
+  assert.match(
+    assets.stylesheet ?? "",
+    /^style\.css\?v=.+/,
+    `stylesheet should use a versioned URL, got ${assets.stylesheet}`,
+  );
+  assert.match(
+    assets.script ?? "",
+    /^script\.js\?v=.+/,
+    `script should use a versioned URL, got ${assets.script}`,
+  );
+}
+
 function assertMonochromeColor(color, label) {
   const normalized = color.replace(/\s+/g, "");
   assert.match(
@@ -63,6 +81,7 @@ const browser = await chromium.launch(launchOptions);
 try {
   const page = await browser.newPage({ viewport: { width: 320, height: 700 } });
   await page.goto(pageUrl);
+  await assertVersionedStaticAssets(page);
   await page.waitForSelector(".model-card");
 
   await assertNoHorizontalScroll(page, "mobile homepage");
