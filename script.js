@@ -246,12 +246,6 @@ const models = [
         { height: "186cm", chest: "93cm", waist: "74cm", hips: "91cm", shoes: "44" },
         "Editorial, Runway"
     ),
-    generatedModel(
-        "matt",
-        "MATT",
-        { height: "184cm", chest: "91cm", waist: "72cm", hips: "90cm", shoes: "43" },
-        "Editorial, Casting"
-    ),
     {
         id: "marika",
         name: "MARIKA",

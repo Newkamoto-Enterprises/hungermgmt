@@ -74,7 +74,7 @@ async function assertExcludedModelsAreAbsent(page) {
     Array.from(document.querySelectorAll(".model-name"), (element) => element.textContent.trim()),
   );
 
-  for (const excludedModelName of ["ALINA", "JACOB", "ESMERALDA"]) {
+  for (const excludedModelName of ["ALINA", "JACOB", "ESMERALDA", "MATT"]) {
     assert.ok(
       !modelNames.includes(excludedModelName),
       `${excludedModelName} should not appear in the homepage roster`,
